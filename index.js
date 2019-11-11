@@ -1,0 +1,2 @@
+const {Package} = require('datapackage')
+
