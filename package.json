@@ -4,12 +4,14 @@
   "description": "Tools for publishing development roadmaps",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "echo \"No tests specified\" && exit 1"
   },
   "author": "Samuel Rinnetmäki",
   "license": "ISC",
   "dependencies": {
-    "datapackage": "^1.1.7",
-    "googleapis": "^45.0.0"
+    "datapackage": "latest",
+    "express": "latest",
+    "googleapis": "latest"
   }
 }
