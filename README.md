@@ -20,4 +20,5 @@ Not recommended, since the transformation from Google Sheets to Data Package is 
 
     node index.js
 
-The port for the service can be set in [config.js](config.js).
+The port for the service can be set in [config.js](config.js). The service will serve a dynamically created
+version of the roadmap JSON.
