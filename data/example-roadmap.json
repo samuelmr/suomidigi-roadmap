@@ -1,0 +1,1589 @@
+{
+    "resources": [
+        {
+            "name": "organization",
+            "data": [
+                [
+                    "id",
+                    "name",
+                    "description",
+                    "url",
+                    "participation_note",
+                    "participation_url"
+                ],
+                [
+                    "DVV",
+                    "Digi- ja väestötietovirasto",
+                    "Digi- ja väestötietovirasto edistää yhteiskunnan digitalisaatiota, turvaa tietojen saatavuutta ja tarjoaa palveluja asiakkaiden elämäntapahtumiin. ",
+                    "https://www.vrk.fi/",
+                    "Tervetuloa tutustumaan kehitteillä olevaan uuteen Suomidigi-palveluun.",
+                    "https://beta.suomidigi.fi/"
+                ]
+            ],
+            "schema": {
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "url",
+                        "type": "string"
+                    },
+                    {
+                        "name": "participation_note",
+                        "type": "string"
+                    },
+                    {
+                        "name": "participation_url",
+                        "type": "string"
+                    }
+                ]
+            },
+            "profile": "data-resource",
+            "encoding": "utf-8"
+        },
+        {
+            "name": "service",
+            "data": [
+                [
+                    "id",
+                    "organization.id",
+                    "name",
+                    "description",
+                    "url"
+                ],
+                [
+                    "Valtuudet",
+                    "DVV",
+                    "Suomi.fi valtuudet",
+                    "Valtuudet-palvelun avulla voi tarkistaa henkilön tai yrityksen oikeuden asioida toisen henkilön tai yrityksen puolesta.",
+                    "https://beta.suomidigi.fi/palvelut/suomifi-valtuudet"
+                ],
+                [
+                    "Tunnistus",
+                    "DVV",
+                    "Suomi.fi-tunnistus",
+                    "Tunnistuspalvelu mahdollistaa Suomen ja EU-kansalaisen sähköisen tunnistamisen tietoturvallisesti erilaisia tunnistusvälineitä hyödyntäen.",
+                    "https://beta.suomidigi.fi/palvelut/suomifi-tunnistus"
+                ],
+                [
+                    "Suomi.fi",
+                    "DVV",
+                    "Suomi.fi-verkkopalvelu",
+                    "Suomi.fi-verkkopalvelu tarjoaa julkishallinnon asiakkaille pääsyn sähköisiin palveluihin ja tiedot kaikista palveluista helposti yhdestä paikasta.",
+                    "https://esuomi.fi/palveluntarjoajille/verkkopalvelu/"
+                ],
+                [
+                    "Palvelutietovaranto",
+                    "DVV",
+                    "Suomi.fi-palvelutietovaranto",
+                    "Palvelutietovarantoa (PTV) hyödyntämällä palveluiden ja palveluntarjoajien tiedot voidaan kuvata yhdenmukaisesti minkä tahansa sähköisen palvelun käyttöön.",
+                    "https://beta.suomidigi.fi/palvelut/suomifi-palvelutietovaranto"
+                ],
+                [
+                    "Viestit",
+                    "DVV",
+                    "Suomi.fi-viestit",
+                    "Viestit-palvelu mahdollistaa viranomaisten sähköisen tiedoksiantoviestinnän riippumatta siitä, missä formaatissa asiakas viestit haluaa vastaanottaa.",
+                    "https://beta.suomidigi.fi/palvelut/suomifi-viestit"
+                ],
+                [
+                    "Palveluväylä",
+                    "DVV",
+                    "Suomi.fi-palveluväylä",
+                    "Palveluväylä tarjoaa vakioidun tavan tietojen siirtoon organisaatioiden välillä mahdollistaen turvallisten palvelukokonaisuuksien rakentamisen.",
+                    "https://beta.suomidigi.fi/palvelut/suomifi-palveluvayla"
+                ]
+            ],
+            "schema": {
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "organization.id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "url",
+                        "type": "string"
+                    }
+                ],
+                "foreignkeys": [
+                    {
+                        "fields": "organization.id",
+                        "reference": {
+                            "resource": "organization",
+                            "fields": "id"
+                        }
+                    }
+                ]
+            },
+            "profile": "data-resource",
+            "encoding": "utf-8"
+        },
+        {
+            "name": "feature",
+            "data": [
+                [
+                    "id",
+                    "parent.id",
+                    "service.id",
+                    "name",
+                    "description",
+                    "dependency",
+                    "dependency_note",
+                    "url",
+                    "version.id_planned",
+                    "version.id_actualized",
+                    "status_code",
+                    "status_note",
+                    "note",
+                    "participation_note",
+                    "participation_url"
+                ],
+                [
+                    "Valtuuksien rajaustarkenne",
+                    "",
+                    "Valtuudet",
+                    "Valtuuksien rajaustarkenne",
+                    "Rajaustarkenne mahdollistaa valtuuden rajaamisen palvelussa esimerkiksi aliorganisaatioon tai tiettyyn asiakkaaseen. Tarkenne on määriteltävä sitä hyödyntävän organisaation toimesta eli se ei ole yleinen toteutus kaikkiin palveluihin.",
+                    "",
+                    "",
+                    "",
+                    "Valtuudet 2018-10",
+                    "Valtuudet 2018-10",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Valtuudet Omaveroon",
+                    "",
+                    "Valtuudet",
+                    "Käyttöönotto",
+                    "Henkilön ja yrityksen puolesta-asiointi tuotantokäyttöön Omavero-palvelussa.",
+                    "",
+                    "",
+                    "",
+                    "Valtuudet 2018-11",
+                    "Valtuudet 2018-11",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Valtuudet Tulorekisteriin",
+                    "",
+                    "Valtuudet",
+                    "Käyttöönotto",
+                    "Valtuudet tuotantokäyttöön Veron Tulorekisterissä.",
+                    "",
+                    "",
+                    "",
+                    "Valtuudet 2019-1",
+                    "Valtuudet 2019-1",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Valtuuksien käytettävyysparannukset",
+                    "",
+                    "Valtuudet",
+                    "Käytettävyysparannukset käyttöliittymissä asiakkaille",
+                    "Valtakirjojen luontia ja hallintaa helpotetaan Suomi.fi-verkkopalvelussa parantamalla valtakirjojen luonnin ja hallinnan käytettävyyttä. Tämä helpottaa erityisesti tilitoimistoasiakkaita.",
+                    "",
+                    "",
+                    "",
+                    "Valtuudet 2018-4",
+                    "",
+                    "",
+                    "Käytössä arviolta: huhtikuu 2018.",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Useamman valtuuttajan valtakirja",
+                    "",
+                    "Valtuudet",
+                    "Useamman valtuuttajan valtakirja",
+                    "Valtuuksien luominen onnistuu tilanteissa, joissa tarvitaan useamman huoltajan valtuus alaikäiselle lapselle.",
+                    "",
+                    "",
+                    "",
+                    "Valtuudet 2019-4",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Valtuuksien raportit",
+                    "",
+                    "Valtuudet",
+                    "Valtuuksien raportit",
+                    "Valtuuksien raportit saatavilla palveluhallinta.suomi.fi-sivuston kautta.",
+                    "",
+                    "",
+                    "",
+                    "Valtuudet 2019-6",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Valtuuksien itsepalvelu",
+                    "",
+                    "Valtuudet",
+                    "Valtuuksien itsepalvelu organisaatioille palveluhallinta.suomi.fi-sivustolla",
+                    "Valtuuksien käyttöönotto, tilastot ja hallinta osana palveluhallintasivustoa.",
+                    "",
+                    "",
+                    "",
+                    "Valtuudet 2019-6",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Valtuuskoodien selaus",
+                    "",
+                    "Valtuudet",
+                    "Valtuuskoodien selaus",
+                    "Suomi.fi-verkkopalveluun tuodaan kansalaisille mahdollisuus katsella ja selata valtuuskoodeja, jotta kansalaiset ymmärtävät mihin palveluihin he voivat tehdä jo sähköisiä valtakirjoja ja mitä ne tarkoittavat.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Käytössä arviolta: syyskuu 2018.",
+                    "Kansalaisten mahdollisuus selailla rajaustarkenteita ja niiden selitteitä Suomi.fi-verkkopalvelussa.",
+                    "",
+                    ""
+                ],
+                [
+                    "Yhdistysrekisteri",
+                    "",
+                    "Valtuudet",
+                    "Yhdistysrekisteri",
+                    "Valtuudet palvelu liittää PRH:n uuden yhdistysrekisterin perusrekisteriksi. Tämä mahdollistaa henkilöiden asioinnin yhdistysten puolesta asiointipalveluissa.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Käytössä arviolta: syyskuu 2019",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Ytitysten valtuudet ja viestit",
+                    "",
+                    "Valtuudet",
+                    "Ytitysten valtuudet ja viestit",
+                    "Yritysten valtuuspyynnöt ja myöntämiset toimitetaan yrityksen Viestit-palveluun.",
+                    "",
+                    "Ominaisuus vaatii sen, että yritysten Viestien toteutus on valmis ja myös otettu käyttöön organisaatioiden (lähettäjät) toimesta.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Käytössä arviolta: syyskuu 2019",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Valtuuksien tapahtumatiedot",
+                    "",
+                    "Valtuudet",
+                    "Valtuuksien tapahtumatiedot",
+                    "Valtuuksien tapahtumatietojen (lokit) näyttäminen kansalaiselle Suomi.fi-verkkopalvelussa.",
+                    "",
+                    "",
+                    "",
+                    "Valtuudet 2019-12",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "KATSO-korvaaminen",
+                    "",
+                    "Valtuudet",
+                    "KATSO-tunnistuspalvelu lakkaa toimimasta",
+                    "1.1.2020 alkaen yrityksille ja yhteisöille tarkoitettu erillinen KATSO tunnistuspalvelu lakkaa toimimasta. Kaikkiin julkisiin palveluihin kirjaudutaan henkilönä ja palvelu tarkistaa valtuudet palvelulta käyttäjän edustusoikeudet.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Valtuudet (+tunnistus) korvaa KATSO-tunnistuksen 2019 loppuun mennessä. Kehitystyössä paljon työtä 2019, vietävä läpi myös kaikkien KATSO-tunnistusta käyttävien palvelujen siirto Valtuuksiin (käyttöönottoja lähes 100). Isoja käyttöönottoja (Omavero, Tulorekisteri 2019 alussa). Valtuuksiin siirtymisen voi aloittaa heti. Osa KATSOn korvaamiseen tarvittavista ominaisuuksista valmistuu vaiheittain vuoden 2019 aikana. Siirtymäajan palvelussa voi käyttää sekä KATSO-tunnistusta että henkilön tunnistusta ja valtuuksia rinnakkain.",
+                    "",
+                    ""
+                ],
+                [
+                    "Organisaatiovaltakirjat",
+                    "",
+                    "Valtuudet",
+                    "Sähköiset valtakirjat organisaatioille",
+                    "Valtuudet-palveluun toteutetaan toiminnot joilla organisaatiot voivat tehdä sähköisiä valtakirjoja asiakkaidensa puolesta. Ominaisuus liittyy sekä KATSO-korvaamiseen että mahdollistaa lakimuutoksen jälkeen sähköisten valtakirjojen luomisen tiskiasioinnissa asioivien henkilöiden puolesta.",
+                    "",
+                    "",
+                    "",
+                    "Valtuudet 2019-12",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Organisaatiovaltakirjat-KATSO-korvaaminen",
+                    "Organisaatiovaltakirjat",
+                    "Valtuudet",
+                    "Virkailijaliittymä KATSO-korvaamiseen",
+                    "Mahdollistetaan valtakirjat korvaamaan KATSO.",
+                    "",
+                    "",
+                    "",
+                    "Valtuudet 2019-6",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Organisaatiovaltakirjat-tiskiasiointi",
+                    "Organisaatiovaltakirjat",
+                    "Valtuudet",
+                    "Virkailijaliittymä tiskiasiointiin",
+                    "Mahdollistetaan valtakirjat palvelupisteissä asioiville.",
+                    "Ulkomaalaisten tunnistaminen",
+                    "Riippuvuus myös ulkomaalaisten tunnistuspalvelun hankinnasta (erityisesti EU-ulkopuoliset käyttäjät).",
+                    "",
+                    "Valtuudet 2019-12",
+                    "",
+                    "",
+                    "",
+                    "Tiskiasioinnin avautuminen kun KAPA-laki päivitetty (sähköisen puolesta asioinnin mahdollistaminen myös henkilöille, jotka eivät itse asioi lainkaan digitaalisesti).",
+                    "",
+                    ""
+                ],
+                [
+                    "Ulkomaalaisten tunnistaminen",
+                    "",
+                    "Tunnistus",
+                    "Ulkomaalaisten tunnistaminen",
+                    "EU-kansalaisten tunnistaminen sähköisiin asiointipalveluihin ja muiden kuin EU maiden kansalaisten tunnistaminen sähköisiin asiointipalveluihin.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "EIDAS-tunnistaminen",
+                    "Ulkomaalaisten tunnistaminen",
+                    "Tunnistus",
+                    "EIDAS-tunnistaminen",
+                    "EU-kansalaisten tunnistaminen sähköisiin asiointipalveluihin.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "EU-kansalaiset ( eIDAS ) vähitellen vuoden 2019 aikana maa kerrallaan",
+                    "eIDAS velvoitteiden täyttäminen (EU kansalaisten tunnistautumisen mahdollistaminen suomalaisiin sähköisen asioinnin palveluihin).",
+                    "",
+                    ""
+                ],
+                [
+                    "Tunnistus muut kuin EU",
+                    "Ulkomaalaisten tunnistaminen",
+                    "Tunnistus",
+                    "Tunnistus muut kuin EU",
+                    "Muiden kuin EU maiden kansalaisten tunnistaminen sähköisiin asiointipalveluihin.",
+                    "",
+                    "",
+                    "",
+                    "Tunnistus 2019-9",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Uusi varmennehierarkia",
+                    "",
+                    "Tunnistus",
+                    "Uusi varmennehierarkia",
+                    "Tunnistuksessa toteutetaan tuki uudelle varmennehierarkialle. Tämä on välttämätöntä, jotta uusien virka- ja henkilökorttien avulla on edelleen mahdollista tunnistautua palveluihin.",
+                    "",
+                    "",
+                    "",
+                    "Tunnistus 2018-10",
+                    "",
+                    "",
+                    "Julkaistu 31.10.2018.",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Tunnistuksen suorituskyky",
+                    "",
+                    "Tunnistus",
+                    "Tunnistuksen suorituskyky",
+                    "Tunnistuksen suorituskykyä parannetaan sekä sovelluskehityksen että inframuutosten avulla.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Julkaistu",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Tunnistuksen metatietojen automatisointi",
+                    "",
+                    "Tunnistus",
+                    "Tunnistuksen metatietojen automatisointi",
+                    "Asiakkaan ottaessa tunnistuspalvelun käyttöön palveluhallinta.suomi.fi-palvelussa, metatietojen käsittely automatisoidaan. Tämä nopeuttaa käyttöönottoprosessia ja helpottaa myös useita palveluja hallinnoivien prosessia.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Käytössä arviolta: toukokuu 2019.",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "OpenID connect",
+                    "",
+                    "Tunnistus",
+                    "OpenID connect -rajapinnat Tupas-rajapintojen tilalle",
+                    "Nykyisten TUPAS-rajapintojen korvaamiseksi kehitettävät OpenID-rajapinnat välityspalveluille valmiina.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Käytössä arviolta: kesäkuu 2019.",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "SOTE-valinnanvapaus",
+                    "",
+                    "Suomi.fi",
+                    "SOTE-valinnanvapauden tietopalvelun kehittäminen",
+                    "Kansalaiset voivat vertailla palvelutuottajia ja niiden palveluja verkkopalvelussa ja valita sotekeskuksen ja siirtyä tallentamaan valinta Kanta.fi-palveluun.",
+                    "",
+                    "",
+                    "",
+                    "Suomi.fi 2019-3",
+                    "",
+                    "",
+                    "PÄÄTTYNYT",
+                    "Lisäominaisuudet tuotantojulkaisuissa 2 viikon välein.",
+                    "",
+                    ""
+                ],
+                [
+                    "Ohjeet ja tuki",
+                    "",
+                    "Suomi.fi",
+                    "Ohjeet ja tuki -kokonaisuus",
+                    "Palvelussa julkaistaan laaja uudistus tuen osalta (uusi Ohjeet ja tuki -osio), joka sisältää kaikkien Suomi.fi-palveluiden yhdenmukaiset ohjeet ja tukimateriaalit.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Julkaistu 30.10.2018",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Palvelukartta",
+                    "",
+                    "Suomi.fi",
+                    "Palvelukartta",
+                    "Palvelussa julkaistaan uusi palvelukartta ja paikkatietopohjaiset paremmat tavat löytää ja hakea palveluja ja palvelupisteitä.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Käytössä arviolta: toukokuu 2019.",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Linkkivalidaattori",
+                    "",
+                    "Suomi.fi",
+                    "Linkkivalidaattori",
+                    "Sisällönhallinnan linkkivalidaattori valmistuu ja otetaan käyttöön. Tämä parantaa linkkien hallintaa (rikkinäisten linkkien löytäminen ja korjaaminen)",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Käytössä arviolta: maaliskuu 2019.",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Päivittymisen nopeuttaminen",
+                    "",
+                    "Suomi.fi",
+                    "Sisällön päivittymisen nopeuttaminen",
+                    "Suomi.fi-sisällön päivittymisen nopeuttaminen palvelutietovarannosta.",
+                    "PTV-nopeuttaminen",
+                    "Edellyttää molempien palveluiden kehittämistä.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Käytössä arviolta: huhtikuu 2019.",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Käyttöliittymäparannukset",
+                    "",
+                    "Suomi.fi",
+                    "Käyttöliittymäparannukset verkkopalvelussa",
+                    "Kokonaisuus erillisiä parannuksia Suomi.fi-palvelun käytettävyyteen.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Käytössä arviolta: huhtikuu 2019.",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Viittomakieliset ohjeet yrityksille",
+                    "",
+                    "Suomi.fi",
+                    "Viittomakieliset opastavat sisällöt myös yrityksille.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Käytössä arviolta: kesäkuu 2019.",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Neuvontachat",
+                    "",
+                    "Suomi.fi",
+                    "Kansalaisneuvonnan ja Yritysneuvonnan Chat-kanavat",
+                    "Kansalaisneuvonnan ja Yritysneuvonnan Chat kanavat otetaan käyttöön verkkopalvelussa.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Käytössä arviolta: syyskuu 2019.",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Itsepalvelu organisaatioille",
+                    "",
+                    "Suomi.fi",
+                    "Verkkopalvelun (rekisteritietojen tuominen) itsepalvelu organisaatioille palveluhallinta.suomi.fi-sivustolla",
+                    "Verkkopalvelun käyttöönotto, tilastot ja hallinta osana palveluhallintasivustoa.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Käytössä arviolta: joulukuu 2019.",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "PTV-laadunvalvonta",
+                    "",
+                    "Palvelutietovaranto",
+                    "Automaattinen laadunvalvonta ja tuki",
+                    "Sisällön laadun automaattinen valvonta ja loppukäyttäjien automatisoitu sisällöntuotannon tuki. Palvelutietovarannossa otetaan automaattinen tietojen tarkastus (ns.” laatuagentti”). Toiminnallisuudet tukevat tietojen tuottajaa oikeanlaisen ja laadukkaan tiedon tuottamisessa.",
+                    "",
+                    "",
+                    "",
+                    "PTV 2018-12",
+                    "",
+                    "",
+                    "Julkaistu 26.11.2018.",
+                    "1. Versio (joulukuu 2018).",
+                    "",
+                    ""
+                ],
+                [
+                    "PTV-laatutietointegraatio",
+                    "",
+                    "Palvelutietovaranto",
+                    "Laatutietojen integrointi saatavilla olevista lähteistä",
+                    "(erityisesti sote-palvelut)",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "PÄÄTTYNYT",
+                    "Vaiheittain versioiden mukana.",
+                    "",
+                    ""
+                ],
+                [
+                    "PTV-käyttettävyysparannukset",
+                    "",
+                    "Palvelutietovaranto",
+                    "Käytettävyysparannukset",
+                    "Palvelutietovarantoon toteutetaan isompi kokonaisuus käytettävyysparannuksia kaikkiin toimintoihin.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Julkaistu versiossa 2.3.",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "PTV-nopeuttaminen",
+                    "",
+                    "Palvelutietovaranto",
+                    "Suomi.fi sisällön päivittymisen nopeuttaminen palvelutietovarannosta.",
+                    "",
+                    "Päivittymisen nopeuttaminen",
+                    "Edellyttää molempien palveluiden kehittämistä.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Käytössä arviolta: kesäkuu 2019.",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Viestit-kokonaispalvelu",
+                    "",
+                    "Viestit",
+                    "Kokonaispalvelu käytössä",
+                    "(viestien jakelu myös tulostukseen ja paperipostilla).",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Viestit mikroyrityksille",
+                    "",
+                    "Viestit",
+                    "Viestit palvelu mikroyrityksille",
+                    "(yritykset joissa viranomaispostin vastaanottaa nimenkirjoittaja), tämä kattaa 93,5% suomalaisista yrityksistä.",
+                    "",
+                    "",
+                    "",
+                    "Viestit 2018-12",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Viestit mikroyrityksille mobiili",
+                    "Viestit mikroyrityksille",
+                    "Viestit",
+                    "Mobiiliversio",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Viestit 2019-4",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Viestit pienyrityksille",
+                    "",
+                    "Viestit",
+                    "Viestit pienille yrityksille ",
+                    "(nimenkirjoittaja tekee sähköisiä valtakirjoja viestien vastaanottoon muille yrityksen työntekijöille).",
+                    "",
+                    "",
+                    "",
+                    "Viestit 2019-5",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Viestit pienyrityksille mobiili",
+                    "Viestit pienyrityksille",
+                    "Viestit",
+                    "Mobiiliversio",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Viestit 2019-8",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Vastaanotto toisen puolesta",
+                    "",
+                    "Viestit",
+                    "Toisen henkilö puolesta viestien vastaanotto.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Viestit 2019-3",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "Viestit-kokonaisuudistus",
+                    "",
+                    "Viestit",
+                    "Viestien kokonaisarkkitehtuuriuudistus",
+                    "(sisäiset ja ulkoiset rajapinnat ja dokumenttienhallinnan uudistus).",
+                    "",
+                    "",
+                    "",
+                    "Viestit 2019-12",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "REST-tuki",
+                    "",
+                    "Palveluväylä",
+                    "REST-tuki",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Väylä 2019-6",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ]
+            ],
+            "schema": {
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "parent.id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "service.id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "dependency",
+                        "type": "string"
+                    },
+                    {
+                        "name": "dependency_note",
+                        "type": "string"
+                    },
+                    {
+                        "name": "url",
+                        "type": "string"
+                    },
+                    {
+                        "name": "version.id_planned",
+                        "type": "string"
+                    },
+                    {
+                        "name": "version.id_actualized",
+                        "type": "string"
+                    },
+                    {
+                        "name": "status_code",
+                        "type": "string"
+                    },
+                    {
+                        "name": "status_note",
+                        "type": "string"
+                    },
+                    {
+                        "name": "note",
+                        "type": "string"
+                    },
+                    {
+                        "name": "participation_note",
+                        "type": "string"
+                    },
+                    {
+                        "name": "participation_url",
+                        "type": "string"
+                    }
+                ],
+                "foreignkeys": [
+                    {
+                        "fields": "parent.id",
+                        "reference": {
+                            "resource": "feature",
+                            "fields": "id"
+                        }
+                    },
+                    {
+                        "fields": "service.id",
+                        "reference": {
+                            "resource": "service",
+                            "fields": "id"
+                        }
+                    },
+                    {
+                        "fields": "version.id_planned",
+                        "reference": {
+                            "resource": "version",
+                            "fields": "id"
+                        }
+                    },
+                    {
+                        "fields": "version.id_actualized",
+                        "reference": {
+                            "resource": "version",
+                            "fields": "id"
+                        }
+                    }
+                ]
+            },
+            "profile": "data-resource",
+            "encoding": "utf-8"
+        },
+        {
+            "name": "phase",
+            "data": [
+                [
+                    "id",
+                    "service.id",
+                    "feature.id",
+                    "name",
+                    "description",
+                    "dependency",
+                    "dependency_note",
+                    "status_code",
+                    "status_note",
+                    "date_planned",
+                    "date_actualized"
+                ],
+                [
+                    "1",
+                    "Valtuudet",
+                    "Organisaatiovaltakirjat",
+                    "Virkailijan käyttöliittymän suunnittelu",
+                    "Virkailijan käyttöliittymät valtakirjojen luomiseen ja hallintaan asiakkaiden puolesta (esimerkiksi julkisen hallinnon organisaation tai ulkomaalaisen yrityksen asiamiehen valtakirjojen luominen). Samalla suunnitellaan myös käyttöliittymät, joilla virkailija voi tehdä valtakirjoja asiointipisteessä läsnä olevien asiakkaiden puolesta.",
+                    "",
+                    "",
+                    "",
+                    "Palvelumuotoilussa.",
+                    "2018-04",
+                    "2018-04"
+                ],
+                [
+                    "2",
+                    "Valtuudet",
+                    "Organisaatiovaltakirjat",
+                    "Virkailijan käyttöliittymän käytettävyystestaus",
+                    "Virkailijan käyttöliittymien käytettävyystestaus ja viimeistely toteutuskuntoon.",
+                    "",
+                    "",
+                    "",
+                    "Palvelumuotoilussa.",
+                    "2019-01",
+                    "2019-01"
+                ],
+                [
+                    "3",
+                    "Valtuudet",
+                    "Organisaatiovaltakirjat",
+                    "Virkailijan käyttöliittymä v1",
+                    "Mahdollisuus luoda valtakirjoja julkisen hallinnon organisaatioiden puolesta ja ulkomaalaisten yritysten asiamiehille.",
+                    "",
+                    "",
+                    "",
+                    "Käytössä arviolta: kesäkuu 2019.",
+                    "2019-06",
+                    ""
+                ],
+                [
+                    "4",
+                    "Valtuudet",
+                    "Organisaatiovaltakirjat",
+                    "Valtakirjojen luominen tiskiasioinnissa",
+                    "Valtakirjojen luominen virkailijan\ntoimesta Valtuuksia hyödyntävässä\norganisaatiossa asiakkaiden puolesta.\nTämä mahdollistaa valtakirjojen\nluomisen myös henkilöille, jotka eivät\nitse asioi ollenkaan verkossa.",
+                    "",
+                    "",
+                    "",
+                    "Käytössä arviolta: joulukuu 2019. Ominaisuus vaati ensin muutoksen lakiin hallinnon yhteisistä sähköisen asioinnin tukipalveluista (571/2016).",
+                    "",
+                    ""
+                ],
+                [
+                    "5",
+                    "Valtuudet",
+                    "KATSO-tunnistuspalvelu lakkaa toimimasta",
+                    "KATSO-tunnistus yrityksille ja yhteisöille lakkaa toimimasta",
+                    "1.1.2020 alkaen kansalainen tunnistautuu julkisen hallinnon asiointipalveluihin aina omilla vahvan tunnistuksen välineillään. Valtuudet-palvelu tuottaa tiedon siitä, mitä yrityksiä ja yhteisöjä tai muita henkilöitä kansalainen voi asiointipalveluissa edustaa.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "6",
+                    "Tunnistus",
+                    "",
+                    "Mobiilitunnistuspalvelun tarjoaja vaihtuu",
+                    "Mobiilitunnistuspalvelun tarjoaja vaihtuu (Telia).",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "7",
+                    "Tunnistus",
+                    "EIDAS-tunnistaminen",
+                    "eIDAS-tunnistaminen alkaa",
+                    "eIDAS-tunnistaminen alkaa kun ensimmäinen notifioitu toisen EU maan tunnistusväline on käytössä (Saksa).",
+                    "",
+                    "",
+                    "",
+                    "Julkaistu 6.2.2018",
+                    "2019-02",
+                    "2019-02"
+                ],
+                [
+                    "8",
+                    "Tunnistus",
+                    "EIDAS-tunnistaminen",
+                    "Usean maan eIDAS-tunnistaminen tuotannossa",
+                    "Tuki useamman EU-maan kansalaisten tunnistusvälineille suomalaisiin asiointipalveluihin. Ensimmäisinä Viro ja Italia. Tämä työ jatkuu koko vuoden ajan uusien maiden osalta.",
+                    "",
+                    "Muiden EU-maiden tunnistamisen mahdollisuus riippuu siitä, millä aikataululla muut EU-maat notifioivat tunnistusvälineitään eIDAS-kyvykkäiksi ja milloin ne hyväksytään käyttöön. Aikataulu ei siis riipu ainoastaan VRK:n kehityksen aikataulusta.",
+                    "",
+                    "Käytössä arviolta: syyskuu 2019.",
+                    "",
+                    ""
+                ],
+                [
+                    "9",
+                    "Tunnistus",
+                    "EIDAS-tunnistaminen",
+                    "Usean maan eIDAS-tunnistaminen tuotannossa",
+                    "Espanja, Kroatia, Luxemburg.",
+                    "",
+                    "",
+                    "",
+                    "Käytössä arviolta: marraskuu 2019.",
+                    "",
+                    ""
+                ],
+                [
+                    "10",
+                    "Tunnistus",
+                    "OpenID connect",
+                    "OpenID connect -rajapinnat Tupas-rajapintojen tilalle",
+                    "1.10.2019 mennessä Tunnistus-palvelu siirtyy käyttämään OpenID connect -rajapintoja pankkien tunnistusvälineisiin nykyisen Tupas-toteutuksen sijaan (Viestintäviraston määräys 72A/2018, määräaika).",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "11",
+                    "Tunnistus",
+                    "Ulkomaalaisten tunnistaminen",
+                    "Ulkomaalaisten tunnistaminen",
+                    "Väestörekisterikeskus hankkii ja implementoi ratkaisun ulkomaalaisten tunnistamista varten. Ratkaisu integroidaan osaksi Tunnistus-palvelua.",
+                    "",
+                    "Edellyttää ulkomaalaisten tunnistuspalvelun kilpailutusta ja hankintaa. Sisältää tästä johtuen myös aikatauluriskejä.",
+                    "",
+                    "Käytössä arviolta: marraskuu 2019.",
+                    "",
+                    ""
+                ],
+                [
+                    "12",
+                    "Suomi.fi",
+                    "Palvelukartta",
+                    "Palvelumuotoilussa",
+                    "Suunnittelussa on kokonaan uudet karttakäyttöliittymät ja oma palvelukartta toiminnallisuus osaksi Suomi.fi verkkopalvelua. Tämä mahdollistaa nykyistä huomattavasti helpomman tavat hakea palveluja paikkatietopohjaisesti.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "13",
+                    "Suomi.fi",
+                    "SOTE-valinnanvapaus",
+                    "Palvelumuotoilussa",
+                    "Palvelumuotoilussa on myös SOTEn valinnanvapauden tietopalvelun ensimmäisen version viimeistely toteutuskuntoon.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "14",
+                    "Suomi.fi",
+                    "Palvelukartta",
+                    "Palvelumuotoilussa",
+                    "Karttaliittymien viimeistely",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "15",
+                    "Suomi.fi",
+                    "Ohjeet ja tuki",
+                    "Uusi tapa esittää opassisältöjä verkkopalvelussa.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Käytössä arviolta: huhtikuu 2019.",
+                    "",
+                    ""
+                ],
+                [
+                    "16",
+                    "Palvelutietovaranto",
+                    "",
+                    "Palvelumuotoilussa",
+                    "Suunnittelussa on nyt helmikuussa 2019 valmistuvan version 2.3 käyttöliittymien ja toiminnallisuuksien määrittely. Tämä sisältää mm. loppukäyttäjien notifikaatit , massatoimintojen parannuksia, saavutettavuus- ja esteettömyystietoihin liittyviä parannuksia, SOTEen liittyvä toimintoja, käytettävyysparannuksia ja linkkivalidaattorin toimintojen suunnittelun.",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "17",
+                    "Palvelutietovaranto",
+                    "",
+                    "Versio 2.2 julkaistaan tuotantoon.",
+                    "Ominaisuuksissa mm. Osoitteiden tarkastukset, käännösten uusintatilaukset, ajastetun julkaisun parannukset, hakuun ja kieliversioihin liittyvät parannukset ja saavutettavuuden metatietojen lisääminen sähköisiin kanaviin.",
+                    "",
+                    "",
+                    "",
+                    "Julkaistu 26.11.2018",
+                    "",
+                    ""
+                ],
+                [
+                    "18",
+                    "Palvelutietovaranto",
+                    "",
+                    "Versio 2.3 julkaistaan.",
+                    "Toiminnallisuuksia tulossa ainakin SOTE keskusten tietoihin, saavutettavuus ja esteettömyystietoihin, massamuutostyökaluihin ja teknisellä tasolla käyttövaltuushallintaan.",
+                    "",
+                    "",
+                    "",
+                    "Julkaistu.",
+                    "",
+                    ""
+                ]
+            ],
+            "schema": {
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "service.id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "feature.id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "dependency",
+                        "type": "string"
+                    },
+                    {
+                        "name": "dependency_note",
+                        "type": "string"
+                    },
+                    {
+                        "name": "status_code",
+                        "type": "string"
+                    },
+                    {
+                        "name": "status_note",
+                        "type": "string"
+                    },
+                    {
+                        "name": "date_planned",
+                        "type": "string"
+                    },
+                    {
+                        "name": "date_actualized",
+                        "type": "string"
+                    }
+                ],
+                "foreignkeys": [
+                    {
+                        "fields": "service",
+                        "reference": {
+                            "resource": "service",
+                            "fields": "id"
+                        }
+                    },
+                    {
+                        "fields": "feature",
+                        "reference": {
+                            "resource": "feature",
+                            "fields": "id"
+                        }
+                    }
+                ]
+            },
+            "profile": "data-resource",
+            "encoding": "utf-8"
+        },
+        {
+            "name": "version",
+            "data": [
+                [
+                    "id",
+                    "organization.id",
+                    "service.id",
+                    "release.id_planned",
+                    "release.id_actualized",
+                    "name",
+                    "description"
+                ],
+                [
+                    "PTV 2018-12",
+                    "DVV",
+                    "Palvelutietovaranto",
+                    "2018-12",
+                    "",
+                    "Palvelutietovaranto joulukuu 2018",
+                    "Lorem ipsum dolor sit amet"
+                ],
+                [
+                    "Suomi.fi 2019-3",
+                    "DVV",
+                    "Suomi.fi",
+                    "2019-03",
+                    "",
+                    "Suomi.fi Q1/2019",
+                    "Lorem ipsum dolor sit amet"
+                ],
+                [
+                    "Tunnistus 2019-9",
+                    "DVV",
+                    "Tunnistus",
+                    "2019-09",
+                    "",
+                    "Tunnistus Q2/2019",
+                    "Lorem ipsum dolor sit amet"
+                ],
+                [
+                    "Valtuudet 2018-10",
+                    "DVV",
+                    "Valtuudet",
+                    "2018-10-23",
+                    "",
+                    "Valtuudet marraskuu 18",
+                    "Lorem ipsum dolor sit amet"
+                ],
+                [
+                    "Valtuudet 2018-11",
+                    "DVV",
+                    "Valtuudet",
+                    "2018-11-09",
+                    "",
+                    "",
+                    "Lorem ipsum dolor sit amet"
+                ],
+                [
+                    "Valtuudet 2019-12",
+                    "DVV",
+                    "Valtuudet",
+                    "2019-01",
+                    "",
+                    "",
+                    "Lorem ipsum dolor sit amet"
+                ],
+                [
+                    "Valtuudet 2019-6",
+                    "DVV",
+                    "Valtuudet",
+                    "2019-06",
+                    "",
+                    "Virkailijaliittymä KATSOn korvaamiseen.",
+                    "Lorem ipsum dolor sit amet"
+                ],
+                [
+                    "Valtuudet 2019-12",
+                    "DVV",
+                    "Valtuudet",
+                    "2019-12",
+                    "",
+                    "Virkailijaliittymä tiskiasiointiin",
+                    "Lorem ipsum dolor sit amet"
+                ],
+                [
+                    "Viestit 2018-12",
+                    "DVV",
+                    "Viestit",
+                    "2018-12",
+                    "",
+                    "",
+                    "Lorem ipsum dolor sit amet"
+                ],
+                [
+                    "Viestit 2019-3",
+                    "DVV",
+                    "Viestit",
+                    "2019-03",
+                    "",
+                    "",
+                    "Lorem ipsum dolor sit amet"
+                ],
+                [
+                    "Viestit 2019-4",
+                    "DVV",
+                    "Viestit",
+                    "2019-04",
+                    "",
+                    "",
+                    "Lorem ipsum dolor sit amet"
+                ],
+                [
+                    "Viestit 2019-5",
+                    "DVV",
+                    "Viestit",
+                    "2019-05",
+                    "",
+                    "",
+                    "Lorem ipsum dolor sit amet"
+                ],
+                [
+                    "Viestit 2019-8",
+                    "DVV",
+                    "Viestit",
+                    "2019-08",
+                    "",
+                    "",
+                    "Lorem ipsum dolor sit amet"
+                ],
+                [
+                    "Viestit 2019-12",
+                    "DVV",
+                    "Viestit",
+                    "2019-12",
+                    "",
+                    "",
+                    "Lorem ipsum dolor sit amet"
+                ],
+                [
+                    "Väylä 2019-6",
+                    "DVV",
+                    "Palveluväylä",
+                    "2019-06",
+                    "",
+                    "",
+                    "Lorem ipsum dolor sit amet"
+                ]
+            ],
+            "schema": {
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "organization.id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "service.id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "release.id_planned",
+                        "type": "string"
+                    },
+                    {
+                        "name": "release.id_actualized",
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "type": "string"
+                    }
+                ],
+                "foreignkeys": [
+                    {
+                        "fields": "organization.id",
+                        "reference": {
+                            "resource": "organization",
+                            "fields": "id"
+                        }
+                    },
+                    {
+                        "fields": "service.id",
+                        "reference": {
+                            "resource": "service",
+                            "fields": "id"
+                        }
+                    },
+                    {
+                        "fields": "release.id_planned",
+                        "reference": {
+                            "resource": "release",
+                            "fields": "id"
+                        }
+                    },
+                    {
+                        "fields": "release.id_actualized",
+                        "reference": {
+                            "resource": "release",
+                            "fields": "id"
+                        }
+                    }
+                ]
+            },
+            "profile": "data-resource",
+            "encoding": "utf-8"
+        },
+        {
+            "name": "release",
+            "data": [
+                [
+                    "id",
+                    "organization.id",
+                    "service.id",
+                    "date_planned",
+                    "date_actualized",
+                    "name",
+                    "description"
+                ]
+            ],
+            "schema": {
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "organization.id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "service.id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "date_planned",
+                        "type": "string"
+                    },
+                    {
+                        "name": "date_actualized",
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "type": "string"
+                    }
+                ],
+                "foreignkeys": [
+                    {
+                        "fields": "organization",
+                        "reference": {
+                            "resource": "organization",
+                            "fields": "id"
+                        }
+                    },
+                    {
+                        "fields": "service",
+                        "reference": {
+                            "resource": "service",
+                            "fields": "id"
+                        }
+                    }
+                ]
+            },
+            "profile": "data-resource",
+            "encoding": "utf-8"
+        }
+    ],
+    "profile": "data-package"
+}
