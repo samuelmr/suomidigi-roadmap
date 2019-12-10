@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<meta charset="UTF-8" />
+<title>Suomidigi Roadmap</title>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<style>
+  body {
+  font-family: 'Source Sans Pro', sans-serif;
+  max-width: 100em;
+  }
+  .hidden {
+    display: none !important;
+  }
+  .filters {
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 14em;
+  }
+  .filters h2 {
+    margin: 1em 0 0 0;
+    padding: 0;
+  }
+  .filters ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  .filters li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  .service {
+    border: 1px solid #999;
+    float: right;
+    margin: 1em 2em 2em 1em;
+    padding: 1em;
+    width: 75%;
+  }
+  .features {
+    display: table;
+    margin: auto;
+    width: 100%;
+  }
+  .feature {
+    cursor: pointer;
+    display: table-row;
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+  }
+  .feature .description, .feature .dependency, .feature .version, .feature .status {
+    display: table-cell;
+    margin: 0;
+    padding: 0 0.5em;
+  }
+  .feature div {
+    background-color: #fff;
+    max-width: 30em;
+    transition: background-color 2000ms linear;
+  }
+  .feature .description {
+    width: 50%;
+  }
+  .feature .dependency {
+    width: 30%;
+  }
+  .feature .version {
+    width: 15%;
+  }
+  .feature .version:hover {
+    text-decoration: underline;
+  }
+  .feature .status {
+    width: 5%;
+  }
+  
+  .feature .description h3 {
+    font-size: 1.5;
+    margin: 0;
+    padding: 0;
+  }
+  .feature .description p {
+    display: none;
+    margin: 0;
+    padding: 0;
+  }
+  .feature.focused div {
+    border: 1px solid #ccc;
+    padding: 1em 0.5em;
+  }
+  .feature.highlight div {
+    background-color: #ffc;
+    transition: background-color 10ms linear;
+  }
+  .feature.focused .description p {
+    display: block;
+  }
+  .feature .version {
+    white-space: nowrap;
+  }
+  
+</style>
+<h1>Suomidigi Roadmap</h1>
+<div id="roadmap">
+ <p style="loading">Ladataan...</p>
+</div>
+<script src="//unpkg.com/datapackage/dist/datapackage.min.js"></script>
+<script>
+
+  const roadmapContainer = document.getElementById('roadmap');
+  let baseUrl = document.location.href.replace(/\/.*?/, '/');
+  const packageURL = baseUrl + 'roadmap.json';
+
+  renderRoadmap(packageURL);
+  
+  async function renderRoadmap(url) {
+    // const response = await fetch(url);
+    // const json = await response.json();
+    // console.log(JSON.stringify(json, null, 1));
+    // const services = json.resources[1];
+
+    const package = await datapackage.Package.load(url);
+    const services = await package.getResource('service').read();
+
+    roadmapContainer.innerHTML = ''
+    const filterContainer = document.createElement('nav');
+    filterContainer.className = 'filters';
+    const filterHeading = document.createElement('h2');
+    filterHeading.appendChild(document.createTextNode('Palvelu'));
+    filterContainer.appendChild(filterHeading);
+    const filters = document.createElement('ul');
+    filterContainer.appendChild(filters);
+    const versions = await package.getResource('version').read();
+    const versionContainer = document.createElement('nav');
+    const versionHeading = document.createElement('h2');
+    versionHeading.appendChild(document.createTextNode('Versio'));
+    filterContainer.appendChild(versionHeading);
+    const versionlist = document.createElement('ul');
+    versions.forEach((version) => {
+      if (version[0] == 'id') {
+        // skip header row
+        return;
+      }
+      let li = document.createElement('li');
+      li.appendChild(document.createTextNode(version[0]));
+      li.title = version[5];
+      li.onclick = filterByVersion;
+      versionlist.appendChild(li);
+    });
+    filterContainer.appendChild(versionlist);
+    roadmapContainer.appendChild(filterContainer);
+    services.forEach((service) => {
+      if (service[0] == "id") {
+        // skip header row
+        return;
+      }
+      let div = document.createElement('div');
+      div.className = 'service visible';
+      let h2 = document.createElement('h2');
+      div.setAttribute('data-service-id', stringToId(service[0]));
+      h2.appendChild(document.createTextNode(service[2]));
+      h2.title = service[3];
+      div.appendChild(h2);
+      roadmapContainer.appendChild(div);
+      let subdiv = document.createElement('div');
+      subdiv.className = 'features';
+      div.appendChild(subdiv);
+      let li = document.createElement('li');
+      let cb = document.createElement('input');
+      cb.checked = true;
+      cb.onchange = filterFeatures;
+      cb.type = 'checkbox';
+      cb.id = stringToId(service[0]);
+      let label = document.createElement('label');
+      label.title = service[3];
+      label.setAttribute('for', cb.id);
+      label.appendChild(document.createTextNode(service[2]));
+      li.appendChild(cb);
+      li.appendChild(label);
+      filters.appendChild(li);
+    });
+    const features = await package.getResource('feature').read();
+    features.forEach((feature) => {
+      let selector = 'div[data-service-id="' + stringToId(feature[2]) + '"] .features';
+      let parentDiv = document.querySelector(selector);
+      if (!parentDiv) {
+        console.warn('No parent service found for feature ' + feature[3]);
+        console.log(selector);
+        return;
+      }
+      let div = document.createElement('div');
+      div.className = 'feature visible';
+      div.id = stringToId(feature[0]);
+      div.setAttribute('data-feature-id', stringToId(feature[0]));
+      div.setAttribute('data-parent-service-id', stringToId(feature[2]));
+      let desc = document.createElement('div');
+      desc.className = 'description';
+      let h3 = document.createElement('h3');
+      h3.appendChild(document.createTextNode(feature[3]));
+      desc.appendChild(h3);
+      let p = document.createElement('p');
+      p.appendChild(document.createTextNode(feature[4]));
+      desc.appendChild(p);
+      if (feature[12]) {
+        let note = document.createElement('p');
+        note.appendChild(document.createTextNode(feature[12]));
+        desc.appendChild(note);
+      }
+      if (feature[14]) {
+        let a = document.createElement('a');
+        a.href = feature[14];
+        a.appendChild(document.createTextNode(feature[13]));
+        desc.appendChild(a);
+      }
+      div.appendChild(desc);
+      parentDiv.appendChild(div);
+      let dependency = document.createElement('div');
+      dependency.className = 'dependency';
+      if (feature[6]) {
+        let text = document.createTextNode(feature[6]);
+        dependency.appendChild(text);
+        if (feature[5]) {
+          let a = document.createElement('a');
+          a.href = '#' + stringToId(feature[5]);
+          a.appendChild(document.createTextNode('»'));
+          a.setAttribute('data-dependency-id', stringToId(feature[5]));
+          a.onclick = highlightDependency;
+          dependency.appendChild(document.createTextNode(' '));
+          dependency.appendChild(a);
+        }
+      }
+      div.appendChild(dependency);
+      let version = document.createElement('div');
+      version.className = 'version';
+      if (feature[8]) {
+        version.appendChild(document.createTextNode(feature[8]));
+      }
+      div.appendChild(version);
+      let status = document.createElement('div');
+      status.className = 'status';
+      if (feature[10]) {
+        version.appendChild(document.createTextNode(feature[10]));
+      }
+      version.onclick=filterByVersion;
+      div.appendChild(status);
+      div.onclick = toggleFocused;
+    });
+  }
+
+  function stringToId(str) {
+    return 'id-'+str.toLowerCase().replace(/[^a-zA-Z0-9-]/g, '-');
+  }
+
+  function filterFeatures() {
+    let serviceId = this.id;
+    let newClass = this.checked ? 'visible' : 'hidden';
+    let oldClass = (newClass == 'visible' ? 'hidden' : 'visible');
+    let selector = '[data-service-id="' + serviceId + '"]';
+    let myFeatures = document.querySelectorAll(selector);
+    if (myFeatures) {
+      myFeatures.forEach((feature) => {
+        feature.classList.replace(oldClass, newClass);
+      });
+    }
+  }
+
+function filterByVersion() {
+    let versionId = this.textContent;
+    console.log('Looking for ' + versionId);
+    let newClass = 'visible';
+    let oldClass = 'hidden';
+    let selector = '.feature';
+    let myFeatures = document.querySelectorAll(selector);
+    if (myFeatures) {
+      myFeatures.forEach((feature) => {
+        let v = feature.querySelector('.version');
+        if (v && v.textContent == versionId) {
+          feature.classList.replace(oldClass, newClass);
+        }
+        else {
+          feature.classList.replace(newClass, oldClass);
+        }
+      });
+    }
+  }
+
+  function toggleFocused() {
+    this.classList.toggle('focused');
+  }
+
+  function highlightDependency() {
+    let featureId = this.getAttribute('data-dependency-id');
+    let selector = '[data-feature-id="' + featureId + '"]';
+    let feat = document.querySelector(selector);
+    if (feat && feat.classList) {
+      feat.classList.add('focused');
+      feat.classList.add('highlight');
+      setTimeout(function() {
+        feat.classList.remove('highlight');
+      }, 5000);
+    }
+    else {
+      console.warn('Broken dependency to ' + featureId + ' from ' + this.id);
+    }
+  }
+
+</script>

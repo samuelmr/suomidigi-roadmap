@@ -1,0 +1,164 @@
+{ "resources": [
+    {
+      "name": "organization",
+      "data": [],
+      "schema": {
+        "fields": [
+          {"name": "id", "type": "string"},
+          {"name": "name", "type": "string"},
+          {"name": "description", "type": "string"},
+          {"name": "url", "type": "string"},
+          {"name": "participation_note", "type": "string"},
+          {"name": "participation_url", "type": "string"}
+        ]
+      }
+    },
+    {
+      "name": "service",
+      "data": [],
+      "schema": {
+        "fields": [
+          {"name": "id", "type": "string"},
+          {"name": "organization.id", "type": "string"},
+          {"name": "name", "type": "string"},
+          {"name": "description", "type": "string"},
+          {"name": "url", "type": "string"}
+        ],
+        "foreignkeys": [
+          {
+            "fields": "organization.id",
+            "reference": {"resource": "organization", "fields": "id"}
+          }
+        ]
+      }
+    },
+    {
+      "name": "feature",
+      "data": [],
+      "schema": {
+        "fields": [
+          {"name": "id", "type": "string"},
+          {"name": "parent.id", "type": "string"},
+          {"name": "service.id", "type": "string"},
+          {"name": "name", "type": "string"},
+          {"name": "description", "type": "string"},
+          {"name": "dependency", "type": "string"},
+          {"name": "dependency_note", "type": "string"},
+          {"name": "url", "type": "string"},
+          {"name": "version.id_planned", "type": "string"},
+          {"name": "version.id_actualized", "type": "string"},
+          {"name": "status_code", "type": "string"},
+          {"name": "status_note", "type": "string"},
+          {"name": "note", "type": "string"},
+          {"name": "participation_note", "type": "string"},
+          {"name": "participation_url", "type": "string"}
+        ],
+        "foreignkeys": [
+          {
+            "fields": "parent.id",
+            "reference": {"resource": "feature", "fields": "id"}
+          },
+          {
+            "fields": "service.id",
+            "reference": {"resource": "service", "fields": "id"}
+          },
+          {
+            "fields": "version.id_planned",
+            "reference": {"resource": "version", "fields": "id"}
+          },
+          {
+            "fields": "version.id_actualized",
+            "reference": {"resource": "version", "fields": "id"}
+          }
+        ]
+      }
+    },
+    {
+      "name": "phase",
+      "data": [],
+      "schema": {
+        "fields": [
+          {"name": "id", "type": "string"},
+          {"name": "service.id", "type": "string"},
+          {"name": "feature.id", "type": "string"},
+          {"name": "name", "type": "string"},
+          {"name": "description", "type": "string"},
+          {"name": "dependency", "type": "string"},
+          {"name": "dependency_note", "type": "string"},
+          {"name": "status_code", "type": "string"},
+          {"name": "status_note", "type": "string"},
+          {"name": "date_planned", "type": "string"},
+          {"name": "date_actualized", "type": "string"}
+        ],
+        "foreignkeys": [
+          {
+            "fields": "service",
+            "reference": {"resource": "service", "fields": "id"}
+          },
+          {
+            "fields": "feature",
+            "reference": {"resource": "feature", "fields": "id"}
+          }
+        ]
+      }
+    },
+    {
+      "name": "version",
+      "data": [],
+      "schema": {
+        "fields": [
+          {"name": "id", "type": "string"},
+          {"name": "organization.id", "type": "string"},
+          {"name": "service.id", "type": "string"},
+          {"name": "release.id_planned", "type": "string"},
+          {"name": "release.id_actualized", "type": "string"},
+          {"name": "name", "type": "string"},
+          {"name": "description", "type": "string"}
+        ],
+        "foreignkeys": [
+          {
+            "fields": "organization.id",
+            "reference": {"resource": "organization", "fields": "id"}
+          },
+          {
+            "fields": "service.id",
+            "reference": {"resource": "service", "fields": "id"}
+          },
+          {
+            "fields": "release.id_planned",
+            "reference": {"resource": "release", "fields": "id"}
+          },
+          {
+            "fields": "release.id_actualized",
+            "reference": {"resource": "release", "fields": "id"}
+          }
+        ]
+      }
+    },
+    {
+      "name": "release",
+      "data": [],
+      "schema": {
+        "fields": [
+          {"name": "id", "type": "string"},
+          {"name": "organization.id", "type": "string"},
+          {"name": "service.id", "type": "string"},
+          {"name": "date_planned", "type": "string"},
+          {"name": "date_actualized", "type": "string"},
+          {"name": "name", "type": "string"},
+          {"name": "description", "type": "string"}
+        ],
+        "foreignkeys": [
+          {
+            "fields": "organization",
+            "reference": {"resource": "organization", "fields": "id"}
+          },
+          {
+            "fields": "service",
+            "reference": {"resource": "service", "fields": "id"}
+          }
+        ]
+      }
+    }
+  ]
+}
