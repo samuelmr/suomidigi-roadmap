@@ -7,7 +7,11 @@ Simple demonstration of visualizing structured roadmap data. Data structure is s
 
 The roadmap data can be produced using any tools capable of producing JSON.
 
-## Create a standalone JSON structure from
+## Create a standalone JSON structure from Google Sheets
+Enable the API as documented in [Node.js Quickstart](https://developers.google.com/sheets/api/quickstart/nodejs).
+Store the credentials as `credentials.json` (the filename can be configured in [config.js](config.js).
+Running the command below will take you through the authorization flow (only when run the first time) and create
+a Data Package file into `data/roadmap.json`.
 
     node scripts/create-datapackage.js
 
@@ -16,4 +20,4 @@ Not recommended, since the transformation from Google Sheets to Data Package is 
 
     node index.js
 
-The port for the service can be set in [config.js](config.js)
+The port for the service can be set in [config.js](config.js).
