@@ -1,0 +1,786 @@
+{
+ "$schema": "https://vega.github.io/schema/vega/v5.json",
+ "width": 1024,
+ "height": 500,
+ "padding": 5,
+ "signals": [
+  {
+   "name": "featureClick",
+   "value": 0,
+   "on": [
+    {
+     "events": "rect:mousedown",
+     "update": "featureClick + 1"
+    }
+   ]
+  }
+ ],
+ "data": [
+  {
+   "name": "service",
+   "values": [
+    {
+     "id": "Valtuudet",
+     "organization_id": "DVV",
+     "name": "Suomi.fi valtuudet",
+     "description": "Valtuudet-palvelun avulla voi tarkistaa henkilön tai yrityksen oikeuden asioida toisen henkilön tai yrityksen puolesta.",
+     "url": "https://beta.suomidigi.fi/palvelut/suomifi-valtuudet"
+    },
+    {
+     "id": "Tunnistus",
+     "organization_id": "DVV",
+     "name": "Suomi.fi-tunnistus",
+     "description": "Tunnistuspalvelu mahdollistaa Suomen ja EU-kansalaisen sähköisen tunnistamisen tietoturvallisesti erilaisia tunnistusvälineitä hyödyntäen.",
+     "url": "https://beta.suomidigi.fi/palvelut/suomifi-tunnistus"
+    },
+    {
+     "id": "Suomi.fi",
+     "organization_id": "DVV",
+     "name": "Suomi.fi-verkkopalvelu",
+     "description": "Suomi.fi-verkkopalvelu tarjoaa julkishallinnon asiakkaille pääsyn sähköisiin palveluihin ja tiedot kaikista palveluista helposti yhdestä paikasta.",
+     "url": "https://esuomi.fi/palveluntarjoajille/verkkopalvelu/"
+    },
+    {
+     "id": "Palvelutietovaranto",
+     "organization_id": "DVV",
+     "name": "Suomi.fi-palvelutietovaranto",
+     "description": "Palvelutietovarantoa (PTV) hyödyntämällä palveluiden ja palveluntarjoajien tiedot voidaan kuvata yhdenmukaisesti minkä tahansa sähköisen palvelun käyttöön.",
+     "url": "https://beta.suomidigi.fi/palvelut/suomifi-palvelutietovaranto"
+    },
+    {
+     "id": "Viestit",
+     "organization_id": "DVV",
+     "name": "Suomi.fi-viestit",
+     "description": "Viestit-palvelu mahdollistaa viranomaisten sähköisen tiedoksiantoviestinnän riippumatta siitä, missä formaatissa asiakas viestit haluaa vastaanottaa.",
+     "url": "https://beta.suomidigi.fi/palvelut/suomifi-viestit"
+    },
+    {
+     "id": "Palveluväylä",
+     "organization_id": "DVV",
+     "name": "Suomi.fi-palveluväylä",
+     "description": "Palveluväylä tarjoaa vakioidun tavan tietojen siirtoon organisaatioiden välillä mahdollistaen turvallisten palvelukokonaisuuksien rakentamisen.",
+     "url": "https://beta.suomidigi.fi/palvelut/suomifi-palveluvayla"
+    }
+   ]
+  },
+  {
+   "name": "release",
+   "format": {
+    "type": "json",
+    "parse": {
+     "date_planned": "date"
+    }
+   },
+   "transform": [
+    {
+     "type": "extent",
+     "field": "date_planned",
+     "signal": "extent"
+    }
+   ],
+   "values": [
+    {
+     "id": "2018-12",
+     "organization_id": "DVV",
+     "service_id": null,
+     "date_planned": "2018-11-30T22:00:00.000Z",
+     "date_actualized": "2018-11-30T22:00:00.000Z",
+     "name": null,
+     "description": null
+    },
+    {
+     "id": "2019-01",
+     "organization_id": "DVV",
+     "service_id": null,
+     "date_planned": "2018-12-31T22:00:00.000Z",
+     "date_actualized": "2018-12-31T22:00:00.000Z",
+     "name": null,
+     "description": null
+    },
+    {
+     "id": "2019-03",
+     "organization_id": "DVV",
+     "service_id": null,
+     "date_planned": "2019-02-28T22:00:00.000Z",
+     "date_actualized": "2019-02-28T22:00:00.000Z",
+     "name": null,
+     "description": null
+    },
+    {
+     "id": "2019-04",
+     "organization_id": "DVV",
+     "service_id": null,
+     "date_planned": "2019-03-31T21:00:00.000Z",
+     "date_actualized": "2019-03-31T21:00:00.000Z",
+     "name": null,
+     "description": null
+    },
+    {
+     "id": "2019-05",
+     "organization_id": "DVV",
+     "service_id": null,
+     "date_planned": "2019-04-30T21:00:00.000Z",
+     "date_actualized": "2019-04-30T21:00:00.000Z",
+     "name": null,
+     "description": null
+    },
+    {
+     "id": "2019-06",
+     "organization_id": "DVV",
+     "service_id": null,
+     "date_planned": "2019-05-31T21:00:00.000Z",
+     "date_actualized": "2019-05-31T21:00:00.000Z",
+     "name": null,
+     "description": null
+    },
+    {
+     "id": "2019-08",
+     "organization_id": "DVV",
+     "service_id": null,
+     "date_planned": "2019-07-31T21:00:00.000Z",
+     "date_actualized": "2019-07-31T21:00:00.000Z",
+     "name": null,
+     "description": null
+    },
+    {
+     "id": "2019-09",
+     "organization_id": "DVV",
+     "service_id": null,
+     "date_planned": "2019-08-31T21:00:00.000Z",
+     "date_actualized": "2019-08-31T21:00:00.000Z",
+     "name": null,
+     "description": null
+    },
+    {
+     "id": "2019-12",
+     "organization_id": "DVV",
+     "service_id": null,
+     "date_planned": "2019-11-30T22:00:00.000Z",
+     "date_actualized": "2019-11-30T22:00:00.000Z",
+     "name": null,
+     "description": null
+    }
+   ]
+  },
+  {
+   "name": "feature",
+   "format": {
+    "type": "json",
+    "parse": {
+     "date_planned": "date"
+    }
+   },
+   "values": [
+    {
+     "id": "Usean valtuuttajan valtakirja",
+     "parent_id": null,
+     "service_id": "Valtuudet",
+     "name": "Useamman valtuuttajan valtakirja",
+     "description": "Valtuuksien luominen onnistuu tilanteissa, joissa tarvitaan useamman huoltajan valtuus alaikäiselle lapselle.",
+     "dependency": null,
+     "dependency_note": null,
+     "url": null,
+     "date_planned": "2019-03-31T21:00:00.000Z",
+     "date_actualized": "2019-03-31T21:00:00.000Z",
+     "version_id_planned": "Valtuudet 2019-4",
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": null,
+     "note": null,
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "Valtuuksien itsepalvelu",
+     "parent_id": null,
+     "service_id": "Valtuudet",
+     "name": "Valtuuksien itsepalvelu organisaatioille palveluhallinta.suomi.fi-sivustolla",
+     "description": "Valtuuksien käyttöönotto, tilastot ja hallinta osana palveluhallintasivustoa.",
+     "dependency": null,
+     "dependency_note": null,
+     "url": null,
+     "date_planned": "2019-05-31T21:00:00.000Z",
+     "date_actualized": "2019-05-31T21:00:00.000Z",
+     "version_id_planned": "Valtuudet 2019-6",
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": null,
+     "note": null,
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "KATSO-korvaaminen",
+     "parent_id": null,
+     "service_id": "Valtuudet",
+     "name": "KATSO-tunnistuspalvelu lakkaa toimimasta",
+     "description": "1.1.2020 alkaen yrityksille ja yhteisöille tarkoitettu erillinen KATSO tunnistuspalvelu lakkaa toimimasta. Kaikkiin julkisiin palveluihin kirjaudutaan henkilönä ja palvelu tarkistaa valtuudet palvelulta käyttäjän edustusoikeudet.",
+     "dependency": null,
+     "dependency_note": null,
+     "url": null,
+     "date_planned": "2019-12-31T22:00:00.000Z",
+     "date_actualized": null,
+     "version_id_planned": null,
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": null,
+     "note": "Valtuudet (+tunnistus) korvaa KATSO-tunnistuksen 2019 loppuun mennessä. Kehitystyössä paljon työtä 2019, vietävä läpi myös kaikkien KATSO-tunnistusta käyttävien palvelujen siirto Valtuuksiin (käyttöönottoja lähes 100). Isoja käyttöönottoja (Omavero, Tulorekisteri 2019 alussa). Valtuuksiin siirtymisen voi aloittaa heti. Osa KATSOn korvaamiseen tarvittavista ominaisuuksista valmistuu vaiheittain vuoden 2019 aikana. Siirtymäajan palvelussa voi käyttää sekä KATSO-tunnistusta että henkilön tunnistusta ja valtuuksia rinnakkain.",
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "Organisaatiovaltakirjat-tiskiasiointi",
+     "parent_id": "Organisaatiovaltakirjat",
+     "service_id": "Valtuudet",
+     "name": "Virkailijaliittymä tiskiasiointiin",
+     "description": "Mahdollistetaan valtakirjat palvelupisteissä asioiville.",
+     "dependency": "Ulkomaalaisten tunnistaminen",
+     "dependency_note": "Riippuvuus myös ulkomaalaisten tunnistuspalvelun hankinnasta (erityisesti EU-ulkopuoliset käyttäjät).",
+     "url": null,
+     "date_planned": "2019-09-30T21:00:00.000Z",
+     "date_actualized": null,
+     "version_id_planned": "Valtuudet 2019-12",
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": null,
+     "note": "Tiskiasioinnin avautuminen kun KAPA-laki päivitetty (sähköisen puolesta asioinnin mahdollistaminen myös henkilöille, jotka eivät itse asioi lainkaan digitaalisesti).",
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "Tunnistus muut kuin EU",
+     "parent_id": "Ulkomaalaisten tunnistaminen",
+     "service_id": "Tunnistus",
+     "name": "Tunnistus muut kuin EU",
+     "description": "Muiden kuin EU maiden kansalaisten tunnistaminen sähköisiin asiointipalveluihin.",
+     "dependency": null,
+     "dependency_note": null,
+     "url": null,
+     "date_planned": "2019-08-31T21:00:00.000Z",
+     "date_actualized": null,
+     "version_id_planned": "Tunnistus 2019-9",
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": null,
+     "note": null,
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "Tunnistuksen metatietojen automatisointi",
+     "parent_id": null,
+     "service_id": "Tunnistus",
+     "name": "Tunnistuksen metatietojen automatisointi",
+     "description": "Asiakkaan ottaessa tunnistuspalvelun käyttöön palveluhallinta.suomi.fi-palvelussa, metatietojen käsittely automatisoidaan. Tämä nopeuttaa käyttöönottoprosessia ja helpottaa myös useita palveluja hallinnoivien prosessia.",
+     "dependency": null,
+     "dependency_note": null,
+     "url": null,
+     "date_planned": "2019-02-28T22:00:00.000Z",
+     "date_actualized": null,
+     "version_id_planned": null,
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": "Käytössä arviolta: toukokuu 2019.",
+     "note": null,
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "OpenID connect",
+     "parent_id": null,
+     "service_id": "Tunnistus",
+     "name": "OpenID connect -rajapinnat Tupas-rajapintojen tilalle",
+     "description": "Nykyisten TUPAS-rajapintojen korvaamiseksi kehitettävät OpenID-rajapinnat välityspalveluille valmiina.",
+     "dependency": null,
+     "dependency_note": null,
+     "url": null,
+     "date_planned": "2019-05-31T21:00:00.000Z",
+     "date_actualized": null,
+     "version_id_planned": null,
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": "Käytössä arviolta: kesäkuu 2019.",
+     "note": null,
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "SOTE-valinnanvapaus",
+     "parent_id": null,
+     "service_id": "Suomi.fi",
+     "name": "SOTE-valinnanvapauden tietopalvelun kehittäminen",
+     "description": "Kansalaiset voivat vertailla palvelutuottajia ja niiden palveluja verkkopalvelussa ja valita sotekeskuksen ja siirtyä tallentamaan valinta Kanta.fi-palveluun.",
+     "dependency": null,
+     "dependency_note": null,
+     "url": null,
+     "date_planned": "2019-02-28T22:00:00.000Z",
+     "date_actualized": null,
+     "version_id_planned": "Suomi.fi 2019-3",
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": "PÄÄTTYNYT",
+     "note": "Lisäominaisuudet tuotantojulkaisuissa 2 viikon välein.",
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "Palvelukartta",
+     "parent_id": null,
+     "service_id": "Suomi.fi",
+     "name": "Palvelukartta",
+     "description": "Palvelussa julkaistaan uusi palvelukartta ja paikkatietopohjaiset paremmat tavat löytää ja hakea palveluja ja palvelupisteitä.",
+     "dependency": null,
+     "dependency_note": null,
+     "url": null,
+     "date_planned": "2019-04-30T21:00:00.000Z",
+     "date_actualized": null,
+     "version_id_planned": null,
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": "Käytössä arviolta: toukokuu 2019.",
+     "note": null,
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "Viittomakieliset ohjeet yrityksille",
+     "parent_id": null,
+     "service_id": "Suomi.fi",
+     "name": "Viittomakieliset opastavat sisällöt myös yrityksille.",
+     "description": null,
+     "dependency": null,
+     "dependency_note": null,
+     "url": null,
+     "date_planned": "2019-08-31T21:00:00.000Z",
+     "date_actualized": null,
+     "version_id_planned": null,
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": "Käytössä arviolta: kesäkuu 2019.",
+     "note": null,
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "Neuvontachat",
+     "parent_id": null,
+     "service_id": "Suomi.fi",
+     "name": "Kansalaisneuvonnan ja Yritysneuvonnan Chat-kanavat",
+     "description": "Kansalaisneuvonnan ja Yritysneuvonnan Chat kanavat otetaan käyttöön verkkopalvelussa.",
+     "dependency": null,
+     "dependency_note": null,
+     "url": null,
+     "date_planned": "2019-11-30T22:00:00.000Z",
+     "date_actualized": null,
+     "version_id_planned": null,
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": "Käytössä arviolta: syyskuu 2019.",
+     "note": null,
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "PTV-laadunvalvonta",
+     "parent_id": null,
+     "service_id": "Palvelutietovaranto",
+     "name": "Automaattinen laadunvalvonta ja tuki",
+     "description": "Sisällön laadun automaattinen valvonta ja loppukäyttäjien automatisoitu sisällöntuotannon tuki. Palvelutietovarannossa otetaan automaattinen tietojen tarkastus (ns.” laatuagentti”). Toiminnallisuudet tukevat tietojen tuottajaa oikeanlaisen ja laadukkaan tiedon tuottamisessa.",
+     "dependency": null,
+     "dependency_note": null,
+     "url": null,
+     "date_planned": "2018-11-30T22:00:00.000Z",
+     "date_actualized": "2018-10-31T22:00:00.000Z",
+     "version_id_planned": "PTV 2018-12",
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": "Julkaistu 26.11.2018.",
+     "note": "1. Versio (joulukuu 2018).",
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "PTV-käyttettävyysparannukset",
+     "parent_id": null,
+     "service_id": "Palvelutietovaranto",
+     "name": "Käytettävyysparannukset",
+     "description": "Palvelutietovarantoon toteutetaan isompi kokonaisuus käytettävyysparannuksia kaikkiin toimintoihin.",
+     "dependency": null,
+     "dependency_note": null,
+     "url": null,
+     "date_planned": "2019-02-28T22:00:00.000Z",
+     "date_actualized": null,
+     "version_id_planned": null,
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": "Julkaistu versiossa 2.3.",
+     "note": null,
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "PTV-nopeuttaminen",
+     "parent_id": null,
+     "service_id": "Palvelutietovaranto",
+     "name": "Suomi.fi sisällön päivittymisen nopeuttaminen palvelutietovarannosta.",
+     "description": null,
+     "dependency": "Päivittymisen nopeuttaminen",
+     "dependency_note": "Edellyttää molempien palveluiden kehittämistä.",
+     "url": null,
+     "date_planned": "2019-05-31T21:00:00.000Z",
+     "date_actualized": null,
+     "version_id_planned": null,
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": "Käytössä arviolta: kesäkuu 2019.",
+     "note": null,
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "Viestit-kokonaispalvelu",
+     "parent_id": null,
+     "service_id": "Viestit",
+     "name": "Kokonaispalvelu käytössä",
+     "description": "(viestien jakelu myös tulostukseen ja paperipostilla).",
+     "dependency": null,
+     "dependency_note": null,
+     "url": null,
+     "date_planned": "2019-12-31T22:00:00.000Z",
+     "date_actualized": null,
+     "version_id_planned": null,
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": null,
+     "note": null,
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "Viestit mikroyrityksille",
+     "parent_id": null,
+     "service_id": "Viestit",
+     "name": "Viestit palvelu mikroyrityksille",
+     "description": "(yritykset joissa viranomaispostin vastaanottaa nimenkirjoittaja), tämä kattaa 93,5% suomalaisista yrityksistä.",
+     "dependency": null,
+     "dependency_note": null,
+     "url": null,
+     "date_planned": "2018-11-30T22:00:00.000Z",
+     "date_actualized": null,
+     "version_id_planned": "Viestit 2018-12",
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": null,
+     "note": null,
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "Vastaanotto toisen puolesta",
+     "parent_id": null,
+     "service_id": "Viestit",
+     "name": "Toisen henkilö puolesta viestien vastaanotto.",
+     "description": null,
+     "dependency": null,
+     "dependency_note": null,
+     "url": null,
+     "date_planned": "2019-02-28T22:00:00.000Z",
+     "date_actualized": null,
+     "version_id_planned": "Viestit 2019-3",
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": null,
+     "note": null,
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "Viestit pienyrityksille mobiili",
+     "parent_id": "Viestit pienyrityksille",
+     "service_id": "Viestit",
+     "name": "Mobiiliversio",
+     "description": null,
+     "dependency": null,
+     "dependency_note": null,
+     "url": null,
+     "date_planned": "2019-07-31T21:00:00.000Z",
+     "date_actualized": null,
+     "version_id_planned": "Viestit 2019-8",
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": null,
+     "note": null,
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "REST-tuki",
+     "parent_id": null,
+     "service_id": "Palveluväylä",
+     "name": "REST-tuki",
+     "description": null,
+     "dependency": null,
+     "dependency_note": null,
+     "url": null,
+     "date_planned": "2019-05-31T21:00:00.000Z",
+     "date_actualized": null,
+     "version_id_planned": "Väylä 2019-6",
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": null,
+     "note": null,
+     "participation_note": null,
+     "participation_url": null
+    }
+   ]
+  },
+  {
+   "name": "meta",
+   "format": {
+    "type": "json",
+    "parse": {
+     "updated": "date",
+     "roadmap_start": "date",
+     "roadmap_end": "date"
+    }
+   },
+   "values": [
+    {
+     "id": "0.0.1",
+     "updated": "2019-12-10T22:00:00.000Z",
+     "roadmap_start": "2018-09-30T21:00:00.000Z",
+     "roadmap_end": "2020-02-29T22:00:00.000Z",
+     "comment": "Ensimmäinen demoversio"
+    }
+   ]
+  }
+ ],
+ "scales": [
+  {
+   "name": "yscale",
+   "type": "band",
+   "range": [
+    0,
+    {
+     "signal": "height"
+    }
+   ],
+   "domain": {
+    "data": "service",
+    "field": "id"
+   }
+  },
+  {
+   "name": "xscale",
+   "type": "time",
+   "range": "width",
+   "round": true,
+   "domain": {
+    "data": "meta",
+    "fields": [
+     "roadmap_start",
+     "roadmap_end"
+    ]
+   }
+  }
+ ],
+ "axes": [
+  {
+   "orient": "bottom",
+   "scale": "xscale",
+   "format": "%m/%y"
+  }
+ ],
+ "marks": [
+  {
+   "type": "text",
+   "from": {
+    "data": "release"
+   },
+   "encode": {
+    "enter": {
+     "x": {
+      "scale": "xscale",
+      "field": "date_planned"
+     },
+     "y": {
+      "value": -10
+     },
+     "angle": {
+      "value": -90
+     },
+     "fill": {
+      "value": "#000"
+     },
+     "text": {
+      "field": "id"
+     },
+     "fontSize": {
+      "value": 10
+     }
+    }
+   }
+  },
+  {
+   "type": "rect",
+   "from": {
+    "data": "release"
+   },
+   "encode": {
+    "enter": {
+     "x": {
+      "scale": "xscale",
+      "field": "date_planned"
+     },
+     "y": {
+      "value": -8
+     },
+     "width": {
+      "value": 1
+     },
+     "height": {
+      "field": {
+       "group": "height"
+      },
+      "offset": 8
+     },
+     "fill": {
+      "value": "#888"
+     }
+    }
+   }
+  },
+  {
+   "type": "text",
+   "from": {
+    "data": "service"
+   },
+   "encode": {
+    "enter": {
+     "x": {
+      "value": 2
+     },
+     "y": {
+      "scale": "yscale",
+      "field": "id",
+      "offset": 13
+     },
+     "fill": {
+      "value": "#000"
+     },
+     "text": {
+      "field": "name"
+     },
+     "fontSize": {
+      "value": 10
+     }
+    }
+   }
+  },
+  {
+   "type": "rect",
+   "from": {
+    "data": "service"
+   },
+   "encode": {
+    "enter": {
+     "x": {
+      "value": 2
+     },
+     "width": {
+      "field": {
+       "group": "width"
+      },
+      "offset": 2
+     },
+     "y": {
+      "scale": "yscale",
+      "field": "id"
+     },
+     "height": {
+      "value": 2
+     },
+     "fill": {
+      "value": "#557"
+     }
+    }
+   }
+  },
+  {
+   "type": "rect",
+   "from": {
+    "data": "feature"
+   },
+   "encode": {
+    "enter": {
+     "width": {
+      "value": 140
+     },
+     "x2": {
+      "scale": "xscale",
+      "field": "date_planned"
+     },
+     "y": {
+      "scale": "yscale",
+      "field": "service_id",
+      "offset": 20
+     },
+     "tooltip": {
+      "field": "description"
+     },
+     "cursor": {
+      "value": "pointer"
+     },
+     "height": {
+      "value": 30
+     },
+     "fill": {
+      "value": "#FFC"
+     },
+     "cornerRadius": {
+      "value": 9
+     }
+    }
+   }
+  },
+  {
+   "type": "text",
+   "from": {
+    "data": "feature"
+   },
+   "encode": {
+    "enter": {
+     "limit": {
+      "value": 130
+     },
+     "x2": {
+      "scale": "xscale",
+      "field": "date_planned",
+      "offset": -5
+     },
+     "y": {
+      "scale": "yscale",
+      "field": "service_id",
+      "offset": 37
+     },
+     "align": {
+      "value": "right"
+     },
+     "fontWeight": {
+      "value": "bold"
+     },
+     "text": {
+      "field": "id"
+     },
+     "fontSize": {
+      "value": 9
+     },
+     "fill": {
+      "value": "#000"
+     }
+    }
+   }
+  }
+ ],
+ "config": {}
+}
