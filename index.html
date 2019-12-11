@@ -4,8 +4,33 @@
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 <style>
   body {
-  font-family: 'Source Sans Pro', sans-serif;
-  max-width: 100em;
+    background-color: #F7F7F7;
+    color: #000000;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 200;
+    line-height: 28px;
+  }
+  h1 {
+    color: #003479;
+    font-size: 1.625rem;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: center;
+  }
+  #graphical, #roadmap {
+    margin: 1em auto;
+    max-width: 1140px;
+  }
+  #graphical, #roadmap > * {
+    background-color: #FFF;
+  }
+  #graphical.vega-embed {
+    border: 1px solid rgba(165, 172, 176, 0.3);
+    box-sizing: border-box;
+    display: block;
+    text-align: center;
+    width: 1140px;
   }
   .hidden {
     display: none !important;
@@ -13,29 +38,42 @@
   .filters {
     float: left;
     margin: 0;
-    padding: 0;
-    width: 14em;
+    padding: 0 1%;
+    width: 20%;
   }
   .filters h2 {
+    border-bottom: 1px solid rgba(165, 172, 176, 0.3);
+    color: #003479;
+    font-size: 0.875rem;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 18px;
     margin: 1em 0 0 0;
-    padding: 0;
+    padding: 0.75rem 0;
+    text-transform: uppercase;
   }
   .filters ul {
+    color: #003479;
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
   .filters li {
+    border-left: 5px solid transparent;
+    color: #2A6EBB;
+    cursor: pointer;
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding-left: 0.75rem 0 0 15px;
+    font-size: 0.875rem;
+    line-height: 18px;
   }
   .service {
     border: 1px solid #999;
     float: right;
-    margin: 1em 2em 2em 1em;
+    margin: 0 0 2em 1%;
     padding: 1em;
-    width: 75%;
+    width: 73%;
   }
   .features {
     display: table;
@@ -108,10 +146,43 @@
  <p style="loading">Ladataan...</p>
 </div>
 <script src="//unpkg.com/datapackage/dist/datapackage.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@4"></script>
 <script type="text/javascript">
-  var view;
 
-  fetch('https://roadmap.seuranta.org/roadmap.vg.json')
+  let baseUrl = document.location.href.replace(/\/[^\/]*?$/, '/');
+  const packageURL = baseUrl + 'data/roadmap.json';
+  const vegaURL = baseUrl + 'data/roadmap.vg.json';
+
+  var view;
+  const roadmapContainer = document.getElementById('roadmap');
+  var vegaOpts = {
+    renderer: 'svg',
+    hover: true,
+    tooltip: true,
+    downloadFileName: 'suomifi-roadmap',
+    formatLocale: 'fi-FI',
+    timeFormatLocale: 'fi-FI',
+  };
+
+  vegaEmbed('#graphical', vegaURL, vegaOpts).then(function(result) {
+    result.view.addEventListener("click", (e, i) => {
+      if (i && i.datum && i.datum.id) {
+      // console.log(i.datum.id);
+        let id =stringToId(i.datum.id);
+        let elem = document.getElementById(id);
+        if (elem) {
+          let y = elem.offsetTop;
+          window.scrollTo({top: y, behavior: 'smooth'});
+          highlightFeature(elem);
+        }
+      }
+    });
+  }).catch(console.error);
+
+  /*
+  fetch(vegaURL)
     .then(res => res.json())
     .then(spec => render(spec))
     .catch(err => console.error(err));
@@ -124,13 +195,8 @@
     });
     return view.runAsync();
   }
-</script>
-<script>
-
-  const roadmapContainer = document.getElementById('roadmap');
-  let baseUrl = document.location.href.replace(/\/.*?/, '/');
-  const packageURL = baseUrl + 'data/example-roadmap.json';
-
+  */
+  
   renderRoadmap(packageURL);
   
   async function renderRoadmap(url) {
@@ -217,19 +283,21 @@
       desc.className = 'description';
       let h3 = document.createElement('h3');
       h3.appendChild(document.createTextNode(feature[3]));
-      desc.appendChild(h3);
-      let p = document.createElement('p');
-      p.appendChild(document.createTextNode(feature[4]));
-      desc.appendChild(p);
-      if (feature[12]) {
-        let note = document.createElement('p');
-        note.appendChild(document.createTextNode(feature[12]));
-        desc.appendChild(note);
+      desc.appendChild(h3); 
+      if (feature[4]) {
+        let p = document.createElement('p');
+        p.appendChild(document.createTextNode(feature[4]));
+        desc.appendChild(p);
       }
       if (feature[14]) {
+        let note = document.createElement('p');
+        note.appendChild(document.createTextNode(feature[14]));
+        desc.appendChild(note);
+      }
+      if (feature[16]) {
         let a = document.createElement('a');
-        a.href = feature[14];
-        a.appendChild(document.createTextNode(feature[13]));
+        a.href = feature[16];
+        a.appendChild(document.createTextNode(feature[15]));
         desc.appendChild(a);
       }
       div.appendChild(desc);
@@ -252,14 +320,14 @@
       div.appendChild(dependency);
       let version = document.createElement('div');
       version.className = 'version';
-      if (feature[8]) {
-        version.appendChild(document.createTextNode(feature[8]));
+      if (feature[10]) {
+        version.appendChild(document.createTextNode(feature[10]));
       }
       div.appendChild(version);
       let status = document.createElement('div');
       status.className = 'status';
-      if (feature[10]) {
-        version.appendChild(document.createTextNode(feature[10]));
+      if (feature[12]) {
+        version.appendChild(document.createTextNode(feature[12]));
       }
       version.onclick=filterByVersion;
       div.appendChild(status);
@@ -312,6 +380,10 @@ function filterByVersion() {
     let featureId = this.getAttribute('data-dependency-id');
     let selector = '[data-feature-id="' + featureId + '"]';
     let feat = document.querySelector(selector);
+    highlightFeature(feat);
+  }
+
+  function highlightFeature(feat) {
     if (feat && feat.classList) {
       feat.classList.add('focused');
       feat.classList.add('highlight');
