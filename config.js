@@ -3,7 +3,8 @@ const config = {
   credentials: 'credentials.json',
   token: 'token.json',
   packageFile: 'data/roadmap.json',
-  defaultPort: 5656
+  vegaSpecFile: 'data/roadmap.vg.json',
+  servicePort: 5656
 };
 
 module.exports = config;
