@@ -17,7 +17,7 @@ You can see the `ihdex.html` file at [samuelmr.github.io/suomidigi-roadmap/](htt
 
 The `roadmap.json` file is a "pure" [Data Package](https://frictionlessdata.io/specs/data-package/). The 
 `roadmap.vg.json` is the same content formatted for using graphical presentation with Vega library. (See
-[frictionlessdata.io/specs/views/](https://frictionlessdata.io/specs/views/] for more information.)
+[frictionlessdata.io/specs/views/](https://frictionlessdata.io/specs/views/) for more information.)
 
 ## Create standalone JSON files from Google Sheets
 Enable the API as documented in [Node.js Quickstart](https://developers.google.com/sheets/api/quickstart/nodejs).
