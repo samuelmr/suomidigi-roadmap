@@ -35,4 +35,6 @@ Can be used if you want to see the changes you make without running a script.
     node index.js
 
 The port for the service can be set in [config.js](config.js). The service will serve a dynamically created
-version of the roadmap JSON. It will also serve static JSON files from the `data` folder.
+version of the roadmap JSON. It will also serve static JSON files from the `data` folder. Note that the server
+doesn't currently serve dynamically created Vega formatted data package. This would be easy to implement, but
+not done yet due to time constraints.
