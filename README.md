@@ -13,6 +13,8 @@ This repository contains an example roadmap visualization that runs mostly in us
 [data/roadmap.vg.json](data/roadmap.vg.json)). The JSON resources contain basically the same data in slightly
 different structures.
 
+You can see the `ihdex.html` file at [samuelmr.github.io/suomidigi-roadmap/](https://samuelmr.github.io/suomidigi-roadmap/).
+
 The `roadmap.json` file is a "pure" [Data Package](https://frictionlessdata.io/specs/data-package/). The 
 `roadmap.vg.json` is the same content formatted for using graphical presentation with Vega library. (See
 [frictionlessdata.io/specs/views/](https://frictionlessdata.io/specs/views/] for more information.)
