@@ -11,7 +11,8 @@ The roadmap data can be produced using any tools capable of producing JSON.
 Enable the API as documented in [Node.js Quickstart](https://developers.google.com/sheets/api/quickstart/nodejs).
 Store the credentials as `credentials.json` (the filename can be configured in [config.js](config.js).
 Running the command below will take you through the authorization flow (only when run the first time) and create
-a Data Package file into `data/roadmap.json`.
+a Data Package file into [data/roadmap.json](data/roadmap.json). It will also create a slightly modified version 
+[data/roadmap.vg.json](data/roadmap.vg.json) for Vega visualization.
 
     node scripts/create-datapackage.js
 
