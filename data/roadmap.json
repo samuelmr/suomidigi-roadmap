@@ -1388,18 +1388,6 @@
                 "width": 1024,
                 "height": 500,
                 "padding": 5,
-                "signals": [
-                    {
-                        "name": "featureClick",
-                        "value": 0,
-                        "on": [
-                            {
-                                "events": "rect:mousedown",
-                                "update": "#target"
-                            }
-                        ]
-                    }
-                ],
                 "data": [
                     {
                         "name": "service"
