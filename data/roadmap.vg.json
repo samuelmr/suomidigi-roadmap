@@ -10,7 +10,7 @@
    "on": [
     {
      "events": "rect:mousedown",
-     "update": "featureClick + 1"
+     "update": "#target"
     }
    ]
   }
@@ -234,7 +234,7 @@
      "service_id": "Valtuudet",
      "name": "Virkailijaliittymä tiskiasiointiin",
      "description": "Mahdollistetaan valtakirjat palvelupisteissä asioiville.",
-     "dependency": "Ulkomaalaisten tunnistaminen",
+     "dependency": "Tunnistus muut kuin EU",
      "dependency_note": "Riippuvuus myös ulkomaalaisten tunnistuspalvelun hankinnasta (erityisesti EU-ulkopuoliset käyttäjät).",
      "url": null,
      "date_planned": "2019-09-30T21:00:00.000Z",
@@ -320,6 +320,25 @@
      "status_code": null,
      "status_note": "PÄÄTTYNYT",
      "note": "Lisäominaisuudet tuotantojulkaisuissa 2 viikon välein.",
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
+     "id": "Päivittymisen nopeuttaminen",
+     "parent_id": null,
+     "service_id": "Suomi.fi",
+     "name": "Sisällön päivittymisen nopeuttaminen",
+     "description": "Suomi.fi-sisällön päivittymisen nopeuttaminen palvelutietovarannosta.",
+     "dependency": "PTV-nopeuttaminen",
+     "dependency_note": "Edellyttää molempien palveluiden kehittämistä.",
+     "url": null,
+     "date_planned": "2019-06-30T21:00:00.000Z",
+     "date_actualized": null,
+     "version_id_planned": null,
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": null,
+     "note": null,
      "participation_note": null,
      "participation_url": null
     },
@@ -457,6 +476,25 @@
      "participation_url": null
     },
     {
+     "id": "Viestit pienyrityksille mobiili",
+     "parent_id": "Viestit pienyrityksille",
+     "service_id": "Viestit",
+     "name": "Mobiiliversio",
+     "description": null,
+     "dependency": null,
+     "dependency_note": null,
+     "url": null,
+     "date_planned": "2019-07-31T21:00:00.000Z",
+     "date_actualized": null,
+     "version_id_planned": "Viestit 2019-8",
+     "version_id_actualized": null,
+     "status_code": null,
+     "status_note": null,
+     "note": null,
+     "participation_note": null,
+     "participation_url": null
+    },
+    {
      "id": "Viestit mikroyrityksille",
      "parent_id": null,
      "service_id": "Viestit",
@@ -487,25 +525,6 @@
      "date_planned": "2019-02-28T22:00:00.000Z",
      "date_actualized": null,
      "version_id_planned": "Viestit 2019-3",
-     "version_id_actualized": null,
-     "status_code": null,
-     "status_note": null,
-     "note": null,
-     "participation_note": null,
-     "participation_url": null
-    },
-    {
-     "id": "Viestit pienyrityksille mobiili",
-     "parent_id": "Viestit pienyrityksille",
-     "service_id": "Viestit",
-     "name": "Mobiiliversio",
-     "description": null,
-     "dependency": null,
-     "dependency_note": null,
-     "url": null,
-     "date_planned": "2019-07-31T21:00:00.000Z",
-     "date_actualized": null,
-     "version_id_planned": "Viestit 2019-8",
      "version_id_actualized": null,
      "status_code": null,
      "status_note": null,

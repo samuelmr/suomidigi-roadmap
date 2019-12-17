@@ -226,7 +226,7 @@
                     "Valtuudet",
                     "Virkailijaliittymä tiskiasiointiin",
                     "Mahdollistetaan valtakirjat palvelupisteissä asioiville.",
-                    "Ulkomaalaisten tunnistaminen",
+                    "Tunnistus muut kuin EU",
                     "Riippuvuus myös ulkomaalaisten tunnistuspalvelun hankinnasta (erityisesti EU-ulkopuoliset käyttäjät).",
                     "",
                     "2019-10-01",
@@ -312,6 +312,25 @@
                     "",
                     "PÄÄTTYNYT",
                     "Lisäominaisuudet tuotantojulkaisuissa 2 viikon välein.",
+                    "",
+                    ""
+                ],
+                [
+                    "Päivittymisen nopeuttaminen",
+                    "",
+                    "Suomi.fi",
+                    "Sisällön päivittymisen nopeuttaminen",
+                    "Suomi.fi-sisällön päivittymisen nopeuttaminen palvelutietovarannosta.",
+                    "PTV-nopeuttaminen",
+                    "Edellyttää molempien palveluiden kehittämistä.",
+                    "",
+                    "2019-07-01",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
                     "",
                     ""
                 ],
@@ -1376,7 +1395,7 @@
                         "on": [
                             {
                                 "events": "rect:mousedown",
-                                "update": "featureClick + 1"
+                                "update": "#target"
                             }
                         ]
                     }
